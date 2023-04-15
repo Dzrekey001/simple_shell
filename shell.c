@@ -22,7 +22,6 @@ int main(int argc, char **argv, char *envp[])
 		shell_prompt();
 		input = read_line();
 		commands = get_arguments(*input);
-		
 		str_copy = strdup(commands[0]);
 		if (commands == NULL || *commands == NULL || **commands == '\0')
 			continue;
