@@ -13,8 +13,6 @@ int main(int argc, char **argv, char *envp[])
 	char *PATH;
 	char *str_copy;
 
-	commands = NULL;
-	input = NULL;
 	(void)argv, (void)envp;
 
 	if (argc < 1)
@@ -24,6 +22,7 @@ int main(int argc, char **argv, char *envp[])
 		shell_prompt();
 		input = read_line();
 		commands = get_arguments(*input);
+		
 		str_copy = strdup(commands[0]);
 		if (commands == NULL || *commands == NULL || **commands == '\0')
 			continue;
@@ -37,9 +36,7 @@ int main(int argc, char **argv, char *envp[])
 			perror(argv[0]);
 		}
 	}
-	free_me(input);
-	free_me(commands);
-	free(str_copy);
+
 	return (0);
 }
 
