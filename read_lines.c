@@ -10,16 +10,15 @@ char **read_line()
 	size_t str;
 	size_t MAX_LENGHT = MAX_LINE_LENGHT;
 
-	buffer = malloc(sizeof(char *) * MAX_LENGHT);
+	buffer = calloc(MAX_LENGHT, sizeof(char *));
 	if (buffer == NULL)
 	{
 		free(buffer);
 		return (NULL);
 	}
 	str = getline(buffer, &MAX_LENGHT, stdin);
-	if (str == (size_t) -1)
+	if (str <= 0)
 	{
-		free(buffer);
 		return (NULL);
 	}
 	while (str > MAX_LENGHT - 1)
