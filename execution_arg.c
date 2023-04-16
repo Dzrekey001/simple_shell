@@ -1,9 +1,8 @@
 #include "shell.h"
 /**
- * execute_command - create a fork procces to execute the program
- * @program_path: path to the program
- * @program_arg: array of argument to be passed to the program.
- * Is should be NULL terminated
+ * execute_command - create a new process to execute a new program
+ * @program_path: path to the program to be executed
+ * @program_arg: arguments to be passed to the program
  * Return: Always Nothing
  */
 
@@ -22,9 +21,9 @@ void execute_command(char *program_path, char **program_arg)
 	if (child_pid == 0)
 	{
 		execve(program_path, program_arg, env);
-		perror(program_path);
 		free_me(program_arg);
 		free(program_path);
+		perror(program_path);
 		exit(98);
 	}
 	else
