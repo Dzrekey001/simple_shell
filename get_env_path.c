@@ -23,11 +23,15 @@ char *check_env_path(char *command)
 		program_path = concatenate_format(dir, command_copy);
 		if (access(program_path, F_OK | X_OK) == 0)
 		{
+			free(sys_path_copy);
+			free(command_copy);
 			return (program_path);
 		}
 		free(program_path);
 		dir = strtok(NULL, ":");
 		i++;
 	}
+	free(sys_path_copy);
+	free(command_copy);
 	return (NULL);
 }
