@@ -23,4 +23,9 @@ void execute_command(char *program_path, char **program_arg);
 /*Utils*/
 char *concatenate_format(char *str1, char *str2);
 
+
+/*builtins*/
+int cd(char  *program_path);
+int check_builtins(char **commands);
+int exit_shell(int status);
 #endif
