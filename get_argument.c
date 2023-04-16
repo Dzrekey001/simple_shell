@@ -15,6 +15,9 @@ char **get_arguments(char *str)
 	int arg_len = 0;
 	char *str_copy = strdup(str);
 
+	if (str == NULL || str_copy == NULL)
+		return (NULL);
+
 	parse = strtok(str_copy, delimiter);
 	while (parse != NULL)
 	{
@@ -24,6 +27,7 @@ char **get_arguments(char *str)
 	arguments = malloc(sizeof(char *) * (arg_len + 1));
 	if (arguments == NULL)
 	{
+		free(arguments);
 		free(str_copy);
 		return (NULL);
 	}
@@ -35,6 +39,7 @@ char **get_arguments(char *str)
 		index++;
 	}
 	arguments[index] = NULL;
+
 	free(str_copy);
 	return (arguments);
 }
