@@ -9,9 +9,9 @@
 
 int main(int argc, char **argv, char *envp[])
 {
-	char **commands, **input;
 	char *PATH;
-	char *str_copy;
+	char **commands = NULL;
+	char **input = NULL;
 
 	(void)argv, (void)envp;
 
@@ -19,16 +19,30 @@ int main(int argc, char **argv, char *envp[])
 		return (-1);
 	while (1)
 	{
+		if (commands != NULL)
+			free(commands);
+		free_me(input);
 		shell_prompt();
 		input = read_line();
 		commands = get_arguments(*input);
-		str_copy = strdup(commands[0]);
+
 		if (commands == NULL || *commands == NULL || **commands == '\0')
+		{
+			free_me(commands);
+			free_me(input);
+			continue;	
+		}
+		if (check_builtins(commands) == 1)
+		{
 			continue;
-		PATH = check_env_path(str_copy);
+		}	
+
+		PATH = check_env_path(commands[0]);
 		if (PATH != NULL)
 		{
 			execute_command(PATH, commands);
+			if (PATH != NULL)
+				free(PATH);
 		}
 		else
 		{
