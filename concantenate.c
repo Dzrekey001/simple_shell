@@ -15,7 +15,10 @@ char *concatenate_format(char *str1, char *str2)
 	buff = malloc(sizeof(char) * (strlen(str1) + strlen(str2) + 2));
 
 	if (buff == NULL)
+	{
+		free(buff);
 		return (NULL);
+	}
 	for (i = 0; str1[i] != '\0'; i++)
 	{
 		buff[i] = str1[i];
@@ -26,6 +29,6 @@ char *concatenate_format(char *str1, char *str2)
 		buff[i + 1] = str2[j];
 		i++;
 	}
-	buff[i + 2] = '\0';
+	buff[i + 1] = '\0';
 	return (buff);
 }
