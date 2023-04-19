@@ -18,5 +18,12 @@ int check_builtins(char **commands)
 	{
 		exit_shell(EXIT_SUCCESS);
 	}
+	if (access(commands[0], F_OK | X_OK) == 0)
+	{
+		execute_command(commands[0], commands);
+		return (1);
+
+	}
+
 	return (0);
 }
