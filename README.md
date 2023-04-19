@@ -57,7 +57,7 @@ If you have any questions or suggestions about this project, please contact us a
 
 Daniel Kwasi Dzrkey <dkdzrkey001@gmail.com>
 
-AkpanElizabeth <[Twitter](https://twitter.com/@ugorjielleza>
+AkpanElizabeth <https://twitter.com/@ugorjielleza>
 
 ***
 We appreciate your feedback!
