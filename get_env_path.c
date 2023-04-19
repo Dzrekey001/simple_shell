@@ -9,8 +9,8 @@ char *check_env_path(char *command)
 {
 	char *dir, *program_path;
 	char *sys_path = getenv("PATH");
-	char *sys_path_copy = strdup(sys_path);
-	char *command_copy = strdup(command);
+	char *sys_path_copy = _strdup(sys_path);
+	char *command_copy = _strdup(command);
 	int i = 0;
 
 	if (sys_path_copy == NULL)

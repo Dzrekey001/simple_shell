@@ -16,7 +16,7 @@ char **read_line()
 		free(buffer);
 		return (NULL);
 	}
-	str = getline(buffer, &MAX_LENGHT, stdin);
+	str = _getline(buffer, &MAX_LENGHT, stdin);
 	if (str <= 0)
 	{
 		return (NULL);
@@ -27,7 +27,7 @@ char **read_line()
 		buffer = realloc(buffer, MAX_LENGHT);
 		if (buffer == NULL)
 			return (NULL);
-		str = getline(buffer, &MAX_LENGHT, stdin);
+		str = _getline(buffer, &MAX_LENGHT, stdin);
 		if (str == (size_t) -1)
 		{
 			free(buffer);

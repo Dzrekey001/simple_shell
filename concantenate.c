@@ -12,7 +12,7 @@ char *concatenate_format(char *str1, char *str2)
 	int i, j;
 	char *buff;
 
-	buff = malloc(sizeof(char) * (strlen(str1) + strlen(str2) + 2));
+	buff = malloc(sizeof(char) * (_strlen(str1) + _strlen(str2) + 2));
 
 	if (buff == NULL)
 	{

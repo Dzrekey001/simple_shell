@@ -13,11 +13,13 @@ char **get_arguments(char *str)
 	char *delimiter = " :\t\r\n";
 	long int index = 0;
 	int arg_len = 0;
-	char *str_copy = strdup(str);
+	char *str_copy = _strdup(str);
 
 	if (str == NULL || str_copy == NULL)
+	{
+		free(str_copy);
 		return (NULL);
-
+	}
 	parse = strtok(str_copy, delimiter);
 	while (parse != NULL)
 	{
