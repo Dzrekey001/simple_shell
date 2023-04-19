@@ -55,7 +55,8 @@ simple_shell [filename].
 ***
 If you have any questions or suggestions about this project, please contact us at:
 
-Daniel Kwasi Dzrkey <dkdzrkey001gmail.com>
+Daniel Kwasi Dzrkey <d(mailto:dkdzrkey001@gmial.com)>
+
 
 AkpanElizabeth <@ugorjielleza>
 
