@@ -54,11 +54,14 @@ int _strlen(char *s);
 
 
 /*builtins*/
+void handle_signals_C(int signal_num);
 int check_builtins(char **commands);
 char check_alias(char *input);
 char **get_alaises(char *str);
 int cd(char  *program_path);
 int exit_shell(int status);
-void handle_signals_C(int signal_num);
+int unset_env(char **args);
+int set_env(char **args);
+
 
 #endif

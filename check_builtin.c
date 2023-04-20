@@ -13,6 +13,17 @@ int check_builtins(char **commands)
 			perror(commands[1]);
 		return (1);
 	}
+	if (_strcmp(commands[0], "setenv") == 0)
+	{
+		if (set_env(commands) == 1)
+			return (1);
+	}
+
+	if (_strcmp(commands[0], "unsetenv") == 0)
+	{
+		if (unset_env(commands) == 1)
+			return (1);
+	}
 	if (_strcmp(commands[0], "exit") == 0)
 	{
 		exit_shell(EXIT_SUCCESS);
