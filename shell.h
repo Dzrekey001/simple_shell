@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <readline/readline.h>
+#include <signal.h>
 /**
  * struct alias_node - a structure to create
  * a node for tempory alias
@@ -58,5 +59,6 @@ char check_alias(char *input);
 char **get_alaises(char *str);
 int cd(char  *program_path);
 int exit_shell(int status);
+void handle_signals_C(int signal_num);
 
 #endif

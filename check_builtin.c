@@ -11,7 +11,6 @@ int check_builtins(char **commands)
 	{
 		if (cd(commands[1]) < 0)
 			perror(commands[1]);
-
 		return (1);
 	}
 	if (_strcmp(commands[0], "exit") == 0)
@@ -22,7 +21,6 @@ int check_builtins(char **commands)
 	{
 		execute_command(commands[0], commands);
 		return (1);
-
 	}
 
 	return (0);

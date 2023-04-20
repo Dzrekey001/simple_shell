@@ -15,6 +15,7 @@ int main(int argc, char **argv, char *envp[])
 
 	if (argc < 1)
 		return (-1);
+	signal(SIGINT, handle_signals_C);
 	while (1)
 	{
 		if (commands != NULL)
@@ -25,13 +26,12 @@ int main(int argc, char **argv, char *envp[])
 		}
 		shell_prompt();
 		input = read_line();
+		if (input == NULL)
+			exit(0);
 		input_alias = _strdup(*input);
 		commands = get_arguments(*input);
 		if (commands == NULL || *commands == NULL || **commands == '\0')
 		{
-			free(input_alias);
-			free_me(commands);
-			free_me(input);
 			continue;
 		}
 		if (check_builtins(commands) == 1)
@@ -50,3 +50,4 @@ int main(int argc, char **argv, char *envp[])
 	}
 	return (0);
 }
+

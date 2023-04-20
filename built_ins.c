@@ -9,6 +9,8 @@ int cd(char  *program_path)
 {
 	if (program_path == NULL)
 		program_path = "/";
+	if (_strcmp(program_path, "~") == 0)
+		program_path = "/home";
 	return (chdir(program_path));
 }
 /**
