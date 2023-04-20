@@ -51,6 +51,7 @@ int _strcmp(char *s1, char *s2);
 void print_alias(alias *tmp);
 char *_strdup(char *str);
 int _strlen(char *s);
+int _atoi(char *s);
 
 
 /*builtins*/
@@ -62,6 +63,6 @@ int cd(char  *program_path);
 int exit_shell(int status);
 int unset_env(char **args);
 int set_env(char **args);
-
+int print_env(void);
 
 #endif

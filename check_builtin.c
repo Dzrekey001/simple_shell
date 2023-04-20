@@ -30,13 +30,19 @@ int check_builtins(char **commands)
 	}
 	if (_strcmp(commands[0], "exit") == 0)
 	{
-		exit_shell(EXIT_SUCCESS);
+		if (commands[1] == NULL)
+			exit_shell(EXIT_SUCCESS);
+		else
+			exit_shell(_atoi(commands[1]));
 	}
+	if (_strcmp(commands[0], "env") == 0)
+		if (print_env() == 1)
+			return (1);
+
 	if (access(commands[0], F_OK | X_OK) == 0)
 	{
 		execute_command(commands[0], commands);
 		return (1);
 	}
-
 	return (0);
 }
