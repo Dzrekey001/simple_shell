@@ -4,6 +4,7 @@ This project aims to develop a user-friendly shell that allows users to interact
 
 The shell is implemented in a high-level programming language and designed with a user interface to make it easy to use.
 
+
 ***
 
 **Features**
