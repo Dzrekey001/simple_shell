@@ -7,10 +7,14 @@
 
 int check_builtins(char **commands)
 {
+	char current_pwd[1024];
+
 	if (_strcmp(commands[0], "cd") == 0)
 	{
 		if (cd(commands[1]) < 0)
 			perror(commands[1]);
+		if (getcwd(current_pwd, sizeof(current_pwd)) != NULL)
+			setenv("PWD", current_pwd, 1);
 		return (1);
 	}
 	if (_strcmp(commands[0], "setenv") == 0)
