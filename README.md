@@ -51,13 +51,12 @@ simple_shell [filename].
 4. To run a command from a file, use the command: ./hsh filename.
 
 ***
-**Contact**
+
+**Author**
 ***
-If you have any questions or suggestions about this project, please contact us at:
+This repository was created as part of coursework for the ALX Software Engineering program.
 
 Daniel Kwasi Dzrkey <dkdzrkey001@gmail.com>
 
 AkpanElizabeth <https://twitter.com/@ugorjielleza>
 
-***
-We appreciate your feedback!
