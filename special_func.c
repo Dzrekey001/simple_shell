@@ -7,7 +7,8 @@
 
 int special_case_semi(char *str)
 {
-	char **commands, *path;
+	char **commands = NULL;
+	char *path = NULL;
 	char **semi_separated = get_arguments(str, ";");
 	int i = 0;
 
@@ -22,14 +23,21 @@ int special_case_semi(char *str)
 		if (check_builtins(commands) == 1)
 		{
 			i++;
+			free(commands);
 			continue;
 		}
 		path = check_env_path(commands[0]);
 		if (path != NULL)
+		{
 			execute_command(path, commands);
+			if (path != NULL)
+				free(path);
+		}
 		else
 			perror(commands[0]);
+		free(commands);
 		i++;
 	}
+	free(semi_separated);
 	return (0);
 }

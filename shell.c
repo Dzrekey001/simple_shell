@@ -13,8 +13,6 @@ int main(int argc, char **argv, char *envp[])
 	char **commands = NULL, **input = NULL;
 	(void)argv, (void)envp;
 
-	if (argc < 1)
-		return (-1);
 	if (argc > 1)
 		execute_file(argv[1]);
 	else
@@ -23,7 +21,11 @@ int main(int argc, char **argv, char *envp[])
 		while (1)
 		{
 			if (commands != NULL)
-				free_all(commands, input, input_alias);
+			{
+				free(commands);
+				free(input_alias);
+				free_me(input);
+			}
 			shell_prompt();
 			input = read_line();
 			if (input == NULL)

@@ -37,7 +37,6 @@ typedef struct alias
 extern char **environ;
 
 void execute_command(char *program_path, char **program_arg);
-void free_all(char *command, char **input, char *input_a);
 a_node *add_node(a_node **head, char *name, char *args);
 char **get_arguments(char *str, char *delimiter);
 void execute_file(char *file_name);
