@@ -60,5 +60,5 @@ This repository was created as part of coursework for the ALX Software Engineeri
 
 Daniel Kwasi Dzrkey <dkdzrkey001@gmail.com>
 
-AkpanElizabeth <https://twitter.com/@ugorjielleza>
+AkpanElizabeth <Ugorjielleza@gmail.com>
 
