@@ -37,8 +37,10 @@ typedef struct alias
 extern char **environ;
 
 void execute_command(char *program_path, char **program_arg);
+void free_all(char *command, char **input, char *input_a);
 a_node *add_node(a_node **head, char *name, char *args);
-char **get_arguments(char *str);
+char **get_arguments(char *str, char *delimiter);
+void execute_file(char *file_name);
 void free_me(char **ptr);
 void shell_prompt(void);
 char *check_env_path();
@@ -47,6 +49,7 @@ char **read_line();
 /*Utils*/
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *concatenate_format(char *str1, char *str2);
+int search_char(char c, char *str);
 int _strcmp(char *s1, char *s2);
 void print_alias(alias *tmp);
 char *_strdup(char *str);
@@ -57,6 +60,8 @@ int _atoi(char *s);
 /*builtins*/
 void handle_signals_C(int signal_num);
 int check_builtins(char **commands);
+int special_case_semi(char *str);
+int check_special(char *input);
 char check_alias(char *input);
 char **get_alaises(char *str);
 int cd(char  *program_path);

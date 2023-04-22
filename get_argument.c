@@ -3,14 +3,14 @@
  * get_arguments - split the str to various path to be
  * passed to the the program
  * @str: command string from the user
+ * @delimiter: determins how the character should be parsed
  * Return: Null if fails, or array of arguments when
  * successful
  */
 
-char **get_arguments(char *str)
+char **get_arguments(char *str, char *delimiter)
 {
 	char **arguments, *argument, *parse;
-	char *delimiter = " :\t\r\n";
 	long int index = 0;
 	int arg_len = 0;
 	char *str_copy = _strdup(str);

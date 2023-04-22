@@ -11,10 +11,27 @@ void free_me(char **ptr)
 
 	if (!ptr || ptr == NULL)
 		return;
-	while (ptr[i])
+	while (ptr[i] != NULL)
 	{
-		free(ptr[i]);
+		if (ptr[i] != NULL)
+		{
+			free(ptr[i]);
+		}
 		i++;
 	}
 	free(ptr);
+}
+/**
+ * free_all - function to do a general clean up
+ * @command: cleanup for command allocation
+ * @input: cleanup for input allocation
+ * @input_a: cleanup for input_a allocation
+ * Return: Always Nothing
+ */
+
+void free_all(char *command, char **input, char *input_a)
+{
+	free(command);
+	free(input_a);
+	free_me(input);
 }

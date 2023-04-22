@@ -21,10 +21,12 @@ void execute_command(char *program_path, char **program_arg)
 	if (child_pid == 0)
 	{
 		execve(program_path, program_arg, env);
-		free_me(program_arg);
-		free(program_path);
-		perror(program_path);
-		exit(98);
+		if (program_arg != NULL || program_arg != NULL)
+		{
+			perror(program_path);
+			free(program_path);
+			exit(98);
+		}
 	}
 	else
 	{

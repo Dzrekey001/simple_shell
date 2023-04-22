@@ -15,39 +15,36 @@ int main(int argc, char **argv, char *envp[])
 
 	if (argc < 1)
 		return (-1);
-	signal(SIGINT, handle_signals_C);
-	while (1)
+	if (argc > 1)
+		execute_file(argv[1]);
+	else
 	{
-		if (commands != NULL)
+		signal(SIGINT, handle_signals_C);
+		while (1)
 		{
-			free(input_alias);
-			free(commands);
-			free_me(input);
-		}
-		shell_prompt();
-		input = read_line();
-		if (input == NULL)
-			exit(0);
-		input_alias = _strdup(*input);
-		commands = get_arguments(*input);
-		if (commands == NULL || *commands == NULL || **commands == '\0')
-		{
-			continue;
-		}
-		if (check_builtins(commands) == 1)
-			continue;
-		if (check_alias(input_alias) == 1)
-			continue;
-		PATH = check_env_path(commands[0]);
-		if (PATH != NULL)
-		{
-			execute_command(PATH, commands);
+			if (commands != NULL)
+				free_all(commands, input, input_alias);
+			shell_prompt();
+			input = read_line();
+			if (input == NULL)
+				exit(0);
+			input_alias = _strdup(*input);
+			commands = get_arguments(*input, " :\t\r\n");
+			if (commands == NULL || *commands == NULL || **commands == '\0')
+				continue;
+			if (check_special(input_alias) == 1 || check_builtins(commands) == 1
+					|| check_alias(input_alias) == 1)
+				continue;
+			PATH = check_env_path(commands[0]);
 			if (PATH != NULL)
-				free(PATH);
+			{
+				execute_command(PATH, commands);
+				if (PATH != NULL)
+					free(PATH);
+			}
+			else
+				perror(argv[0]);
 		}
-		else
-			perror(argv[0]);
 	}
 	return (0);
 }
-
