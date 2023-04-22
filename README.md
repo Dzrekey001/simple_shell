@@ -4,6 +4,7 @@ This project aims to develop a user-friendly shell that allows users to interact
 
 The shell is implemented in a high-level programming language and designed with a user interface to make it easy to use.
 
+
 ***
 
 **Features**
@@ -21,6 +22,7 @@ Simple shell 0.4: Implement the exit built-in, which exits the shell.
 **Simple shell 1.0**: Implement the env built-in, which prints the current environment.
 
 **Simple shell 0.4.1**: Handle arguments for the built-in exit.
+
 **Usage**: exit status, where status is an integer used to exit the shell.
 Setenv, unsetenv: Implement the setenv and unsetenv builtin commands.
 
