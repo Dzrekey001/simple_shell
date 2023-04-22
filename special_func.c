@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * special_case_semi - function to handle the ";" command
- * @str: string to be parsed
+ * @str: string to be parsed.
  * Return: 1 on success, 0 on failure
  */
 
