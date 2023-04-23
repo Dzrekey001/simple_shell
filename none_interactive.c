@@ -7,34 +7,40 @@
 
 void execute_file(char *file_name)
 {
-	char *error;
-	char *PATH = NULL;
-	char  **commands = NULL;
-	char line[MAX_LINE_LENGHT];
+	char *line_copy, *command_error = "No Commands Found\n";
+	char *PATH = NULL, **commands = NULL, line[MAX_LINE_LENGHT];
 	FILE *file = fopen(file_name, "r");
 
 	if (file == NULL)
 	{
-		error = "Could not open file";
-		write(STDERR_FILENO, error, _strlen(error));
+		perror("ERROR");
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(line, MAX_LINE_LENGHT, file) != NULL)
 	{
+		line_copy = _strdup(line);
 		commands = get_arguments(line, " :\t\r\n");
-		if (commands == NULL || *commands == NULL || **commands == '\0')
+		check_null(commands, command_error);
+		if (line[0] == '#')
 		{
-			error = "Commands Not Found\n";
-			write(STDERR_FILENO, error, _strlen(error));
-			exit(EXIT_SUCCESS);
+			free(line_copy);
+			free(commands);
+			continue;
 		}
-		PATH = check_env_path(commands[0]);
-		execute_command(PATH, commands);
-		if (commands != NULL)
+		else
 		{
-			free(PATH);
+			if (check_continue(line_copy, commands) == 1)
+				continue;
+			PATH = check_env_path(commands[0]);
+			if (PATH == NULL)
+			{
+				perror(commands[0]);
+				free_all(PATH, line_copy, commands);
+				continue;
+			}
+			execute_command(PATH, commands);
 			if (commands != NULL)
-				free(commands);
+				free_all(PATH, line_copy, commands);
 		}
 	}
 	fclose(file);

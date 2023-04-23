@@ -21,18 +21,15 @@ int main(int argc, char **argv, char *envp[])
 		while (1)
 		{
 			if (commands != NULL)
-			{
-				free(commands);
-				free(input_alias);
-				free_me(input);
-			}
+				free_all_main(commands, input_alias, input);
 			shell_prompt();
 			input = read_line();
 			if (input == NULL)
 				exit(0);
 			input_alias = _strdup(*input);
 			commands = get_arguments(*input, " :\t\r\n");
-			if (commands == NULL || *commands == NULL || **commands == '\0')
+			if (commands == NULL || *commands == NULL || **commands == '\0'
+					|| input_alias[0] == '#')
 				continue;
 			if (check_special(input_alias) == 1 || check_builtins(commands) == 1
 					|| check_alias(input_alias) == 1)
