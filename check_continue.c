@@ -19,9 +19,9 @@ int check_continue(char *str, char **commands)
 }
 /**
  * free_all - function to free some memory
- * @path: path address to be fread
- * @str: str address to be fread
- * @commands: commands address to be fread
+ * @path: path address to be freed
+ * @str: str address to be freed
+ * @commands: commands address to be freed
  * Return: Always Nothing
  */
 
@@ -47,9 +47,9 @@ void check_null(char **commands, char *error)
 }
 /**
  * free_all_main - free addresses
- * @commands: commands address to be fread
- * @input_alias: input_alias address to be fread
- * @input: input address to be fread
+ * @commands: commands address to be freed
+ * @input_alias: input_alias address to be freed
+ * @input: input address to be freed
  * Return: Always Nothing
  */
 
