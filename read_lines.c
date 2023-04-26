@@ -36,3 +36,48 @@ char **read_line()
 	}
 	return (buffer);
 }
+/**
+ * _strtok - delimites strings into tokens
+ * @str: string to be delimited
+ * @delim: character to be used as the delimiter
+ * Return: Null in failure; else return tokened string
+ */
+
+char *_strtok(char *str, char *delim)
+{
+	static char *last_token;
+	char *token;
+	char *delim_pos;
+
+	if (str != NULL)
+	{
+		last_token = str;
+	}
+	else if (last_token == NULL)
+	{
+		return (NULL);
+	}
+	token = last_token;
+	while (*token && _strchr(delim, *token))
+	{
+		token++;
+	}
+	if (*token)
+	{
+		delim_pos = _strpbrk(token, delim);
+		if (delim_pos)
+		{
+			*delim_pos = '\0';
+			last_token = delim_pos + 1;
+		}
+		else
+		{
+			last_token = NULL;
+		}
+	}
+	else
+	{
+		token = NULL;
+	}
+	return (token);
+}

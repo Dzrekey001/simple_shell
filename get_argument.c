@@ -20,11 +20,11 @@ char **get_arguments(char *str, char *delimiter)
 		free(str_copy);
 		return (NULL);
 	}
-	parse = strtok(str_copy, delimiter);
+	parse = _strtok(str_copy, delimiter);
 	while (parse != NULL)
 	{
 		arg_len++;
-		parse = strtok(NULL, delimiter);
+		parse = _strtok(NULL, delimiter);
 	}
 	arguments = malloc(sizeof(char *) * (arg_len + 1));
 	if (arguments == NULL)
@@ -33,11 +33,11 @@ char **get_arguments(char *str, char *delimiter)
 		free(str_copy);
 		return (NULL);
 	}
-	argument = strtok(str, delimiter);
+	argument = _strtok(str, delimiter);
 	while (argument != NULL)
 	{
 		arguments[index] = argument;
-		argument = strtok(NULL, delimiter);
+		argument = _strtok(NULL, delimiter);
 		index++;
 	}
 	arguments[index] = NULL;

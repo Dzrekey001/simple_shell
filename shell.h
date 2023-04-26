@@ -52,8 +52,12 @@ char **read_line();
 /*Utils*/
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *concatenate_format(char *str1, char *str2);
+char *_strtok(char *str, char *delim);
+char *_strstr(char *haystack, char *needle);
+char *_strpbrk(char *s, char *accept);
 int search_char(char c, char *str);
 int _strcmp(char *s1, char *s2);
+char *_strchr(char *s, char c);
 void print_alias(alias *tmp);
 char *_strdup(char *str);
 int _strlen(char *s);

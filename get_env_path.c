@@ -17,7 +17,7 @@ char *check_env_path(char *command)
 		return (NULL);
 	if (sys_path == NULL)
 		return (NULL);
-	dir = strtok(sys_path_copy, ":");
+	dir = _strtok(sys_path_copy, ":");
 	while (dir != NULL)
 	{
 		program_path = concatenate_format(dir, command_copy);
@@ -28,7 +28,7 @@ char *check_env_path(char *command)
 			return (program_path);
 		}
 		free(program_path);
-		dir = strtok(NULL, ":");
+		dir = _strtok(NULL, ":");
 		i++;
 	}
 	free(sys_path_copy);
