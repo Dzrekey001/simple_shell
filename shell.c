@@ -13,7 +13,7 @@ int main(int argc, char **argv, char *envp[])
 	char **commands = NULL, **input = NULL;
 	(void)argv, (void)envp;
 
-	if (argc > 1)
+	if (argc == 2)
 		execute_file(argv[1]);
 	else
 	{
