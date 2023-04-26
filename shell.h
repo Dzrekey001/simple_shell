@@ -43,6 +43,7 @@ void free_all(char *path, char *str, char **commands);
 char **get_arguments(char *str, char *delimiter);
 int check_continue(char *str, char **commands);
 void check_null(char **commands, char *error);
+void int_to_string(char *buffer, int num);
 void execute_file(char *file_name);
 void free_me(char **ptr);
 void shell_prompt(void);

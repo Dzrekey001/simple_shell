@@ -126,4 +126,35 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	buffer[len] = '\0';
 	return (len);
 }
+/**
+ * int_to_string - convert an int to string
+ * @buffer: buffer to store the converted string
+ * @num: number to be converted
+ * Return: Always Nothing
+ */
+void int_to_string(char *buffer, int num)
+{
+	char *digits;
+	int i;
+
+	if (num < 0)
+	{
+		*buffer++ = '-';
+		num = -num;
+	}
+	digits = malloc(sizeof(char) * 20);
+	if (digits == NULL)
+		return;
+	i = 0;
+	do {
+		digits[i++] = (num % 10) + '0';
+		num /= 10;
+	} while (num > 0);
+	while (i > 0)
+	{
+		*buffer++ = digits[--i];
+	}
+	*buffer = '\0';
+	free(digits);
+}
 
